@@ -3,7 +3,7 @@
   user:
     name: "{{ user_username }}"
     group: "{{ user_group if user_group is defined else omit }}"
-    password: "{{ user_password if user_password is defined and user_password != 'no' else omit }}"
+    password: "{{ user_password if user_password is defined else omit }}"
 
 - name: "Set the user {{ user_username }} SSH authorized_keys entry"
   include_role:

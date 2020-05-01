@@ -1,6 +1,3 @@
-dependencies:
-  - dottgonzo.ansible_role_add_ssh_authorized_key
-
 galaxy_info:
   author: Dario Caruso
   description: Add Users to Server

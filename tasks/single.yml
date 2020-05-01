@@ -4,6 +4,7 @@
     name: "{{ user_username }}"
     group: "{{ user_group if user_group is defined else omit }}"
     password: "{{ user_password if user_password is defined else omit }}"
+    home: "/home/{{ user_username }}"
 
 - name: "Set the user {{ user_username }} SSH authorized_keys entry"
   include_role:

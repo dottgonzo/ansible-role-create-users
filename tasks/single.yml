@@ -14,3 +14,4 @@
     user_for_authorized_keys: "{{ user_username }}"
   when:
     - user_authorized_keys_entry is defined
+    - user_authorized_keys_entry != 'no'

@@ -1,0 +1,19 @@
+---
+- name: Add a Single User to Server
+  include_tasks: single.yml
+  when:
+    - user_username is defined
+    - set_users is undefined
+
+- name: Add Multiple Users to Server
+  include_tasks: single.yml
+  loop: "{{ set_users if set_users is defined else [] }}"
+  loop_control:
+    loop_var: set_user_item
+  vars:
+    user_username: "{{ set_user_item.username }}"
+    user_group: "{{ set_user_item.group if set_user_item.group else set_user_item.username }}"
+    user_password: "{{ set_user_item.password if set_user_item.password else 'no' }}"
+    user_authorized_keys_entry: "{{ set_user_item.sshkey if set_user_item.sshkey else omit }}"
+  when:
+    - set_users is defined

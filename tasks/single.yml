@@ -3,7 +3,7 @@
 - name: "Set the user {{ user_username }} group"
   group:
     name: "{{ user_username }}"
-    gid: "{{ user_gid if user_gid is defined else omit}}"
+    gid: "{{ user_gid if user_gid is defined else omit }}"
 
 
 - name: "Add the user {{ user_username }}"

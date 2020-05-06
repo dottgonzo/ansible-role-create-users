@@ -12,6 +12,7 @@
     loop_var: set_user_item
   vars:
     user_username: "{{ set_user_item.username }}"
+    user_uid: "{{ set_user_item.user_uid if set_user_item.user_uid is defined else omit }}"
     user_groups: "{{ set_user_item.groups if set_user_item.groups is defined else omit }}"
     user_password: "{{ set_user_item.password if set_user_item.password is defined else omit }}"
     user_authorized_keys_entry: "{{ set_user_item.sshkey if set_user_item.sshkey is defined else 'no' }}"

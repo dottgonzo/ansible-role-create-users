@@ -1,10 +1,19 @@
 ---
+
+- name: "Set the user {{ user_username }} group"
+  group:
+    name: "{{ user_username }}"
+    gid: "{{ user_gid if user_gid is defined else omit}}"
+
+
 - name: "Add the user {{ user_username }}"
   user:
     name: "{{ user_username }}"
+    group: "{{ user_username }}"
     groups: "{{ user_groups if user_groups is defined else omit }}"
     password: "{{ user_password if user_password is defined else omit }}"
     shell: "/bin/bash"
+    uid: "{{ user_uid if user_uid is defined else omit }}"
 
 - name: "Set the user {{ user_username }} SSH authorized_keys entry"
   include_role:
